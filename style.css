@@ -1,0 +1,70 @@
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to right, #0d6efd, #6610f2);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.custom-navbar {
+    background: linear-gradient(90deg, #0d6efd, #6610f2);
+}
+
+
+/* Animated Welcome Text */
+.welcome-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 30px;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Card Hover Effect */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Statistics Box */
+.stat-box {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-box h2 {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+/* Navbar Link Hover Effect */
+.navbar-nav .nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/* Responsive Text */
+@media (max-width: 768px) {
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+}

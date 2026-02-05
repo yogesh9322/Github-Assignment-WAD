@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICT College - Home</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            min-height: 100vh;
+        }
+
+        .main-box {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ✅ Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">PICT College</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tabs">Achievements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tabs">Toppers</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tabs">Statistics</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ✅ Hero Section -->
+<div class="hero-section mt-5 text-center p-5 text-white" style="background: linear-gradient(to right, #0d6efd, #6610f2);">
+    <h1 class="fw-bold">✨ Welcome to PICT College ✨</h1>
+    <p class="lead mt-2">Pune Institute of Computer Technology - Excellence in Education</p>
+</div>
+
+<!-- ✅ Tabs Section -->
+<div class="container my-5 main-box" id="tabs">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#achievements">Our Achievements</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#toppers">Toppers</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#statistics">Statistics</button>
+        </li>
+    </ul>
+
+    <div class="tab-content p-4 border border-top-0">
+
+        <!-- ✅ Achievements Tab -->
+        <div class="tab-pane fade show active" id="achievements">
+            <h3 class="mb-3">🏆 Our Achievements</h3>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <input type="text" id="achievementTitle" class="form-control" placeholder="Achievement Title">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" id="achievementDesc" class="form-control" placeholder="Achievement Description">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100" onclick="addAchievement()">Add Achievement</button>
+                </div>
+            </div>
+
+            <div class="row g-3" id="achievementList">
+                <div class="col-md-4">
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Top Engineering College</h5>
+                            <p class="card-text">Ranked among top institutes in Maharashtra.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ Toppers Tab -->
+        <div class="tab-pane fade" id="toppers">
+            <h3 class="mb-3">🎓 Topper Students</h3>
+
+            <!-- Add Topper Form -->
+            <div class="row mb-3 g-2 align-items-end">
+                <div class="col-md-3">
+                    <input type="text" id="topperName" class="form-control" placeholder="Student Name">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="topperBranch" class="form-control" placeholder="Branch">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" id="topperCGPA" class="form-control" placeholder="CGPA">
+                </div>
+                <div class="col-md-2">
+                    <input type="file" id="topperImage" class="form-control" accept="image/*" onchange="previewImage(event)">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-success w-100" onclick="addTopper()">Add Topper</button>
+                </div>
+            </div>
+
+            <!-- Image Preview -->
+            <div class="mb-3">
+                <img id="previewImg" class="preview-img">
+            </div>
+
+            <!-- Topper Cards -->
+            <div class="row g-4" id="topperList">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Amit Sharma</h5>
+                            <p class="card-text">Branch: Computer Engineering<br>CGPA: 9.8</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ Statistics Tab -->
+        <div class="tab-pane fade" id="statistics">
+            <h3 class="mb-4">📊 College Statistics</h3>
+            <div class="card p-3 shadow-sm">
+                <canvas id="statsChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center p-3">
+    <p>© 2026 PICT College | Designed by Student</p>
+</footer>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // ✅ Preview Uploaded Image
+    let imageData = "";
+
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imageData = e.target.result;
+            const preview = document.getElementById("previewImg");
+            preview.src = imageData;
+            preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // ✅ Add Topper with Image
+    function addTopper() {
+        let name = document.getElementById("topperName").value;
+        let branch = document.getElementById("topperBranch").value;
+        let cgpa = document.getElementById("topperCGPA").value;
+
+        if (!name || !branch || !cgpa) {
+            alert("Please fill all topper details!");
+            return;
+        }
+
+        let imgSrc = imageData || "https://via.placeholder.com/300x200";
+
+        let topperCard = `
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="${imgSrc}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">${name}</h5>
+                    <p class="card-text">Branch: ${branch}<br>CGPA: ${cgpa}</p>
+                </div>
+            </div>
+        </div>`;
+        document.getElementById("topperList").innerHTML += topperCard;
+
+        document.getElementById("topperName").value = "";
+        document.getElementById("topperBranch").value = "";
+        document.getElementById("topperCGPA").value = "";
+        document.getElementById("topperImage").value = "";
+        document.getElementById("previewImg").style.display = "none";
+        imageData = "";
+    }
+
+    // ✅ Add Achievement
+    function addAchievement() {
+        let title = document.getElementById("achievementTitle").value;
+        let desc = document.getElementById("achievementDesc").value;
+
+        if (!title || !desc) {
+            alert("Please fill achievement details!");
+            return;
+        }
+
+        let achievementCard = `
+        <div class="col-md-4">
+            <div class="card border-primary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
+                    <p class="card-text">${desc}</p>
+                </div>
+            </div>
+        </div>`;
+        document.getElementById("achievementList").innerHTML += achievementCard;
+
+        document.getElementById("achievementTitle").value = "";
+        document.getElementById("achievementDesc").value = "";
+    }
+
+    // ✅ Bar Chart
+    let chartLoaded = false;
+    document.querySelector('button[data-bs-target="#statistics"]').addEventListener("click", function () {
+        if (chartLoaded) return;
+        chartLoaded = true;
+
+        const ctx = document.getElementById('statsChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Placement Rate (%)', 'Students Placed', 'Top Companies', 'Average CGPA'],
+                datasets: [{
+                    label: 'PICT College Data',
+                    data: [95, 1200, 150, 9.5],
+                    backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

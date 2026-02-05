@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Success</title>
+<style>
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+  font-family: Poppins, sans-serif;
+}
+
+.box {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+h1 {
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h1>🎉 Registration Successful!</h1>
+  <p id="userName"></p>
+</div>
+
+<script>
+let name = localStorage.getItem("username");
+document.getElementById("userName").innerText = name ? "Welcome, " + name + "!" : "";
+</script>
+
+</body>
+</html>
